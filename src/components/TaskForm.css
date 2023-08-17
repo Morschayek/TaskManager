@@ -1,0 +1,14 @@
+.task-form-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .task-input {
+    margin-right: 10px;
+  }
+  
+  .add-button {
+    flex-shrink: 0;
+  }
+  
