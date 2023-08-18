@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { deleteTask, updateTask } from '../redux/actions';
+import { TaskContainer, TaskButtons, TaskInput, TaskInfo, EditButton, DeleteButton } from './TaskStyle';
 
-const Task = ({ task, onDelete, onUpdate }) => {
+const Task = ({ task, onDelete, onUpdate, onEdit }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
@@ -12,23 +13,45 @@ const Task = ({ task, onDelete, onUpdate }) => {
     setIsEditing(false);
   };
 
+  const handleDelete = () => {
+    onDelete(task.id);
+  };
+
   return (
-    <div>
-      {isEditing ? (
-        <div>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-          <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-          <button onClick={handleUpdate}>Save</button>
-        </div>
-      ) : (
-        <div>
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={onDelete}>Delete</button>
-        </div>
-      )}
-    </div>
+    <TaskContainer>
+      <TaskInfo>
+        {isEditing ? (
+          <div style={{ width: '100%' }}>
+            <TaskInput
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <TaskInput
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <EditButton onClick={handleUpdate}>
+              <span>&#10003;</span>
+            </EditButton>
+          </div>
+        ) : (
+          <div style={{ width: '100%' }}>
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
+          </div>
+        )}
+      </TaskInfo>
+      <TaskButtons>
+        <EditButton onClick={onEdit}>
+          <span>&#9998;</span>
+        </EditButton>
+        <DeleteButton onClick={handleDelete}>
+          <span>&#10006;</span>
+        </DeleteButton>
+      </TaskButtons>
+    </TaskContainer>
   );
 };
 

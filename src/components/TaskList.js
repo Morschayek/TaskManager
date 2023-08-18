@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { deleteTask, addTask, updateTask } from '../redux/actions';
 import Task from './task';
 import TaskForm from './TaskForm';
-import './TaskList.css';
+import {
+  TaskListContainer,
+  TaskContainer,
+} from './TaskListStyle'; 
 
 const TaskList = ({ tasks, deleteTask, addTask, updateTask }) => {
   const [editingTask, setEditingTask] = useState(null);
@@ -13,9 +16,9 @@ const TaskList = ({ tasks, deleteTask, addTask, updateTask }) => {
   };
 
   return (
-    <div className="task-list-container">
+    <TaskListContainer>
       {tasks.map((task) => (
-        <div key={task.id} className="task-container">
+        <TaskContainer key={task.id}>
           {editingTask && editingTask.id === task.id ? (
             <TaskForm
               taskToEdit={editingTask}
@@ -27,16 +30,14 @@ const TaskList = ({ tasks, deleteTask, addTask, updateTask }) => {
               onDelete={() => deleteTask(task.id)}
               onUpdate={(updatedTask) => {
                 setEditingTask(null);
-                deleteTask(task.id);
-                delete updatedTask.id;
-                addTask(updatedTask);
+                updateTask(updatedTask); 
               }}
               onEdit={() => handleEdit(task)}
             />
           )}
-        </div>
+        </TaskContainer>
       ))}
-    </div>
+    </TaskListContainer>
   );
 };
 

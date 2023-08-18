@@ -1,17 +1,22 @@
-// reducers.js
-
 import { ADD_TASK, DELETE_TASK, UPDATE_TASK } from './actions';
 
 const initialState = {
   tasks: [],
+  taskIdCounter: 1, 
 };
 
 const tasksReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK:
+      const newTask = {
+        id: state.taskIdCounter,
+        title: action.payload.title,
+        description: action.payload.description,
+      };
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasks: [...state.tasks, newTask],
+        taskIdCounter: state.taskIdCounter + 1,
       };
     case DELETE_TASK:
       return {
