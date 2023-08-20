@@ -8,12 +8,12 @@ const Task = ({ task, onDelete, onUpdate, onEdit }) => {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
 
-  const handleUpdate = () => {
+  const handleUpdate = () => { //The function to be called when the task is updated.
     onUpdate({ id: task.id, title, description });
     setIsEditing(false);
   };
 
-  const handleDelete = () => {
+  const handleDelete = () => { // The function to be called when the "Delete" button is clicked.
     onDelete(task.id);
   };
 
@@ -21,7 +21,7 @@ const Task = ({ task, onDelete, onUpdate, onEdit }) => {
     <TaskContainer>
       <TaskInfo>
         {isEditing ? (
-          <div style={{ width: '100%' }}>
+          <div>
             <TaskInput
               type="text"
               value={title}
@@ -37,7 +37,7 @@ const Task = ({ task, onDelete, onUpdate, onEdit }) => {
             </EditButton>
           </div>
         ) : (
-          <div style={{ width: '100%' }}>
+          <div>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
           </div>

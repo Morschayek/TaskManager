@@ -6,7 +6,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 
-// Create your theme here
 const theme = createTheme({
   palette: {
     background: {
@@ -14,18 +13,22 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Open Sans Condensed, sans-serif', // Set your desired font here
+    fontFamily: 'Open Sans Condensed, sans-serif', 
   },
 });
 
 function App() {
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+    //provides the Redux store to all components in the app.
+    // wraps the app content and manages the persistence process. 
+    //apply the created theme to the app.
+    //provides a base layer of global styles.
+    <Provider store={store}> 
+      <PersistGate loading={null} persistor={persistor}> 
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <div className="App">
-            <header className="App-header">
+            <header>
               <h1 style={{ textAlign: 'center' }}>Todo List App</h1>
             </header>
             <main>

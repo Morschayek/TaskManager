@@ -14,7 +14,7 @@ export const TaskInput = styled('input')({
   padding: '8px',
   border: '1px solid #ccc',
   borderRadius: '4px',
-  fontSize: '16px',
+  fontSize: '1.2em',
   margin: '8px',
   boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.5)', 
 });
@@ -26,7 +26,7 @@ export const AddButton = styled('button')({
   borderRadius: '50%',
   border: 'none',
   cursor: 'pointer',
-  fontSize: '16px',
+  fontSize: '1em',
   boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.5)',
   transition: 'background-color 0.3s ease',
   '&:hover': {

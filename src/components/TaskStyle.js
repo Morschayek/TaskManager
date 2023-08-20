@@ -17,8 +17,7 @@ export const TaskInfo = styled('div')({
   flexDirection: 'column', 
   gap: '4px', 
   maxWidth: '80%', 
-  wordWrap: 'break-word',
-  whiteSpace: 'normal',
+  fontSize: '1.2em',
 });
 
 export const TaskButtons = styled('div')({
@@ -29,7 +28,7 @@ export const TaskButtons = styled('div')({
 export const TaskInput = styled('input')({
   flex: 1,
   padding: '8px',
-  fontSize: '16px',
+  fontSize: '1.2em',
   border: 'none',
 });
 
@@ -40,12 +39,8 @@ export const StyledButton = styled('button')({
   borderRadius: '50%',
   border: 'none',
   cursor: 'pointer',
-  fontSize: '16px',
+  fontSize: '1em',
   boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.5)',
-  transition: 'background-color 0.3s',
-  '&:hover': {
-    backgroundColor: '#357a38',
-  },
 });
 
 export const EditButton = styled(StyledButton)({

@@ -7,7 +7,8 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Provider store={store}>
+  //makes the Redux store available to the app component.
+  <Provider store={store}> 
     <App />
   </Provider>
 );
